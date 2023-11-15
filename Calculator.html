@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calculator</title>
+        <link rel="icon" href="calcu.png">
+    </head>
+    <style> 
+        table { 
+            background-color: rgb(181, 249, 226);
+            border: 2px solid rgb(43, 43, 43);
+            border-radius: 10px;
+            margin-left: auto; 
+            margin-right: auto;           
+        }
+        
+          
+        input[type="button"] { 
+            width: 100%;
+            margin: 1px; 
+            padding: 20px 30px; 
+            background-color: grey; 
+            color: black; 
+            font-size: 20px; 
+            border-radius: 10px;
+            cursor: pointer; 
+        } 
+
+        input[type="button"]:hover { 
+            background-color: rgba(180, 180, 180, 0.992);;
+        } 
+   
+   
+          
+        input[type="text"] { 
+            text-align: end;
+            margin: 10px;
+            background-color: rgba(152, 151, 151, 0.807);
+            color: black;
+            padding: 20px 60px; 
+            font-size: 26px;
+            font-weight: bold;
+            border-radius: 5px; 
+            border: 3px solid black; 
+        } 
+    </style> 
+</head> 
+  
+<body> 
+  
+    <table id="calculator">
+        <tr> 
+            <td colspan="4"> 
+                <input type="text" id="ANS" disabled>
+            </td> 
+            <td><input type="button" onclick="clearInput()" value="c" style="background-color: crimson;"></td>
+        </tr> 
+  
+        <tr> 
+            <td><input type="button" onclick="append(7)" value="7"></td> 
+            <td><input type="button" onclick="append(8)" value="8"></td> 
+            <td><input type="button" onclick="append(9)" value="9"></td>  
+            <td><input type="button" onclick="divide()" value="/" style="background-color: aqua;"></td> 
+        </tr> 
+        <tr> 
+            <td><input type="button" onclick="append(4)" value="4"></td> 
+            <td><input type="button" onclick="append(5)" value="5"></td> 
+            <td><input type="button" onclick="append(6)" value="6"></td> 
+            <td><input type="button" onclick="multiply()" value="*" style="background-color: aqua;"></td> 
+        </tr> 
+        <tr> 
+            <td><input type="button" onclick="append(1)" value="1"></td> 
+            <td><input type="button" onclick="append(2)" value="2"></td> 
+            <td><input type="button" onclick="append(3)" value="3"></td> 
+            <td><input type="button" onclick="subtract()" value="-" style="background-color: aqua;"></td> 
+        </tr> 
+        <tr> 
+            <td><input type="button" onclick="append('.')" value="."></td>
+            <td colspan="2">
+                <input type="button" onclick="append(0)" value="0">
+            </td>  
+            <td><input type="button" onclick="add()" value="+" style="background-color: aqua;"></td>    
+            <td rowspan="2"><input type="button" onclick="calculate()" value="=" style="background-color: aqua;"></td> 
+        </tr> 
+    </table> 
+
+    <script>
+        let currentInput = '';
+        let currentOperator = '';
+
+        function append(number){
+            currentInput += number;
+            document.getElementById('ANS').value = currentInput;
+        }
+
+        function add(){
+            currentOperator = '+';
+            currentInput += currentOperator;
+            document.getElementById('ANS').value = currentInput;
+        }
+
+        function subtract(){
+            currentOperator = '-';
+            currentInput += currentOperator;
+            document.getElementById('ANS').value = currentInput;
+        }
+
+        function multiply(){
+            currentOperator = '*';
+            currentInput += currentOperator;
+            document.getElementById('ANS').value = currentInput;
+        }
+
+        function divide(){
+            currentOperator = '/';
+            currentInput += currentOperator;
+            document.getElementById('ANS').value = currentInput;
+        }
+
+        function calculate(){
+            const ANS = eval(currentInput);
+            document.getElementById('ANS').value = ANS;
+            currentInput = ANS.toString();
+            currentOperator = '';
+
+        }
+        function clearInput(){
+            currentInput = '';
+            currentOperator = '';
+            document.getElementById('ANS').value = '';
+        }
+    </script>
+</body> 
+  
+</html>  
+   
+
